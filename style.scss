@@ -1,0 +1,332 @@
+/**FONTS**/
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&display=swap');
+
+/**COLOR SCHEME**/
+$header-font: "Cantata One", serif; 
+$body-font: Arial, Helvetica, sans-serif; 
+
+$primary-text: #262626; 
+$secondary-text: #A1A1A1;       
+$primary-accent: #80A470;   
+
+$white: #ffffff;         
+$background-main: #b2bcaf;  
+
+$slide-background:  #FCFBFC;
+$slide-border: 1px solid #DBDBDB;
+
+$tag-background: #F5F3F0;         
+$tag-border: solid 1px #D9D7D4;
+
+
+
+/**STYLING**/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $white;
+    font-family: $body-font;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    main {
+        color: $primary-text;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        max-width: 1200px;
+        width: 100%;
+
+        header,
+        section {
+            width: 100%;
+        }
+
+        h1 {
+            font-family: $header-font;
+            font-size: 1.5rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .recipe-header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: -15px;
+            z-index: -1;
+
+            #recipe-category {
+                position: absolute;
+                right: 5%;
+                top: 5%;
+                height: auto;
+                background-color: $white;
+                border: solid 1px $primary-accent;
+                padding: 10px 15px;
+                border-radius: 20px;
+                font-weight: bold;
+                color: $primary-text;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .recipe-details {
+            background-color: $white;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            height: auto !important;
+
+            .recipe-tags {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                margin-bottom: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                div {
+                    background-color: $tag-background;
+                    border: $tag-border;
+                    padding: 10px 15px;
+                    border-radius: 30px;
+                    font-size: 14px;
+                }
+            }
+
+            .swiper {
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+
+                .tabs {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 20px;
+
+                    .tab {
+                        padding: 0 10px;
+                        font-size: 1rem;
+                        border: none;
+                        cursor: pointer;
+                        border-radius: 5px;
+                        margin-right: 10px;
+                        color: $primary-text;
+                        background-color: transparent;
+                        transition: all 0.3s ease;
+
+                        &.active {
+                            color: $primary-accent;
+                            font-weight: bold;
+                            transform: scale(1.1);
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .slides-container {
+                    position: relative;
+                    width: 100%;
+                    max-width: 900px;
+                    margin: 0 auto;
+                    transition: height 0.3s ease;
+                    padding: 20px 0;
+                }
+
+
+
+                .slide {
+                    width: 100%;
+                    height: auto;
+                    padding: 20px;
+                    background-color: $slide-background;
+                    border-radius: 10px;
+                    border: $slide-border;
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, rotate 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+                    transform: translateX(100%);
+                    visibility: hidden;
+                    opacity: 1;
+                    transform-origin: center center;
+                    user-select: none;
+
+                    &.active {
+                        transform: translateX(0);
+                        position: static;
+                        visibility: visible;
+                        opacity: 1;
+                        rotate: 0deg;
+                        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    }
+
+                    &:not(.active) {
+                        transform: translateX(100%);
+                    }
+
+                    &.recipe-ingredients {
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+
+                            tr{
+                                td {
+                                    padding-bottom: 15px;
+                                }
+
+                                &:last-of-type {
+                                    td {
+                                        padding-bottom: 0;
+                                    }  
+                                }
+                            }
+
+                           
+
+                            .ingredient {
+                                text-align: left;
+                            }
+
+                            .measurement {
+                                text-align: right;
+                                color: $secondary-text;
+                            }
+                        }
+                    }
+
+                    &.recipe-instructions {
+                        text-align: left;
+
+                        p {
+                            margin-bottom: 20px;
+
+                            &:last-of-type{
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .recipe-link {
+                a {
+                    text-decoration: none;
+                    cursor: pointer;
+                    color: $primary-accent;
+                    font-weight: bold;
+                    transition: .3s;
+
+                    &:hover {
+                        opacity: .8;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+
+    body {
+        justify-content: center !important;
+        background-color: $background-main;
+
+    }
+    main {
+        flex-direction: row !important;
+        align-items: start !important;
+        height: 600px;
+        margin: 100px auto;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+
+        .recipe-header {
+            width: 50%;
+            height: 100% !important;
+            margin-bottom: 0 !important;
+            margin-right: -15px;
+            border-radius: 20px 0 0 20px !important;
+
+            .recipe-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover !important;
+            }
+
+        }
+
+        .recipe-details {
+            border-radius: 20px !important;
+            max-height: 100%;
+            overflow: hidden;
+
+            h1 {
+                margin-top: 20px;
+            }
+
+            .swiper {
+                padding: 20px;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tabs {
+                margin-bottom: 0 !important;
+            }
+
+
+            .slides-container {
+                cursor: grab;
+                position: relative !important;
+                height: 800px !important;
+                overflow: hidden !important;
+
+                &:active {
+                    cursor: grabbing;
+                }
+
+                .slide {
+                    overflow-y: auto !important;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+
+
+}

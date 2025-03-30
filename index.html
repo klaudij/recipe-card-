@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Random recipy</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main>
+    <header class="recipe-header">
+      <p class="category" id="recipe-category"></p>
+      <img id="recipe-image" src="https://www.themealdb.com/images/media/meals/ysqupp1511640538.jpg" alt="">
+    </header>
+
+    <section class="recipe-details">
+      <h1 id="recipe-name">Crispy Eggplant egg</h1>
+
+      <div class="swiper">
+        <div class="tabs">
+          <button class="tab active" data-slide="0">Ingredients</button>
+          <button class="tab" data-slide="1">Directions</button>
+        </div>
+        <div class="slides-container">
+          <div class="slide recipe-ingredients active" id="recipe-ingredients">
+            <table id="ingredients-table"></table>
+          </div>
+          <div class="slide recipe-instructions" id="recipe-instructions"></div>
+
+        </div>
+      </div>
+      <div class="recipe-link">
+        <p><a id="recipe-link" href="" target="_blank">Click here</a> to find the original recipe</p>
+      </div>
+      <div class="recipe-tags" id="recipe-tags">
+        <div>Snack</div>
+        <div>Treat</div>
+      </div>
+    </section>
+
+  </main>
+  <script src="javascript.js"></script>
+</body>
+
+</html>
